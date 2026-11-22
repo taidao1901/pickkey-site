@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pick Key — TikTok authorization</title>
+<style>
+  body{margin:0;background:#faf7f5;color:#1f1a17;font:16px/1.6 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+  main{max-width:620px;margin:0 auto;padding:56px 20px}
+  h1{font-size:24px;margin:0 0 8px}
+  .box{background:#fff;border:1px solid #ece2dc;border-radius:12px;padding:18px 20px;margin:22px 0}
+  code{display:block;word-break:break-all;background:#f1eae5;padding:10px 12px;border-radius:8px;font-size:13px;margin-top:8px}
+  .muted{color:#6d625c;font-size:14px}
+</style>
+</head>
+<body>
+<main>
+  <h1>TikTok authorization</h1>
+  <p>Pick Key received your decision. One last step: copy the value below and paste it into the Pick Key
+  setup command on the computer that runs the tool.</p>
+
+  <div class="box">
+    <div class="muted">authorization code</div>
+    <code id="code">—</code>
+    <div class="muted" style="margin-top:12px">state</div>
+    <code id="state">—</code>
+  </div>
+
+  <p class="muted">Nothing on this page is stored or sent anywhere: the values come from the address bar and
+  stay in your browser. If you did not start this yourself, close the page and revoke access in
+  TikTok → Settings and privacy → Security and login → Manage app permissions.</p>
+</main>
+<script>
+  const q = new URLSearchParams(location.search);
+  document.getElementById('code').textContent = q.get('code') || '(no code in the URL)';
+  document.getElementById('state').textContent = q.get('state') || '(none)';
+  if (q.get('error')) {
+    document.getElementById('code').textContent = q.get('error') + ' — ' + (q.get('error_description') || '');
+  }
+</script>
+</body>
+</html>
