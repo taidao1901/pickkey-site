@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pick Key — review videos for the @pickkeyreal TikTok channel</title>
+<meta name="description" content="Pick Key is a desktop tool that produces product review videos for the @pickkeyreal TikTok channel and publishes them through the official TikTok Content Posting API.">
+<link rel="icon" href="assets/icon.png">
+<style>
+  :root{color-scheme:light}
+  *{box-sizing:border-box}
+  body{margin:0;background:#faf7f5;color:#1f1a17;font:17px/1.65 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+  header,main,footer{max-width:860px;margin:0 auto;padding:0 20px}
+  header{padding-top:40px;display:flex;align-items:center;gap:14px}
+  header img{width:56px;height:56px;border-radius:14px}
+  header .t{font-weight:700;font-size:20px}
+  header .s{color:#6d625c;font-size:14px}
+  h1{font-size:34px;line-height:1.2;margin:34px 0 10px;letter-spacing:-.01em}
+  .lead{font-size:19px;color:#403733;margin:0 0 26px}
+  h2{font-size:20px;margin:36px 0 8px}
+  ul,ol{padding-left:22px}
+  li{margin:6px 0}
+  .card{background:#fff;border:1px solid #ece2dc;border-radius:14px;padding:20px 22px;margin:18px 0}
+  code{background:#f1eae5;padding:1px 6px;border-radius:5px;font-size:.9em}
+  a{color:#b4461f}
+  .muted{color:#6d625c}
+  footer{margin-top:56px;padding:22px 20px 60px;border-top:1px solid #e6ddd7;color:#6d625c;font-size:14px}
+</style>
+</head>
+<body>
+<header>
+  <img src="assets/icon.png" alt="Pick Key">
+  <div>
+    <div class="t">Pick Key</div>
+    <div class="s">Review videos for <a href="https://www.tiktok.com/@pickkeyreal">@pickkeyreal</a></div>
+  </div>
+</header>
+
+<main>
+  <h1>Product review videos, published to TikTok the official way.</h1>
+  <p class="lead">Pick Key is the production and publishing tool behind the TikTok channel
+  <a href="https://www.tiktok.com/@pickkeyreal">@pickkeyreal</a>. It turns buyer reviews into short vertical
+  videos, lets the channel owner approve each one, and publishes the approved video to TikTok through the
+  official <strong>Content Posting API</strong>.</p>
+
+  <div class="card">
+    <strong>Not a public service.</strong> Pick Key runs on the channel owner's own computer and only ever
+    publishes to the TikTok account that authorised it. There is no sign-up, no third-party accounts, and
+    nothing is posted automatically: every video is reviewed and approved before it is sent to TikTok.
+  </div>
+
+  <h2>What it does</h2>
+  <ol>
+    <li><strong>Collect</strong> — reads product reviews and measurements for one product.</li>
+    <li><strong>Build</strong> — writes the script, records the voice-over and renders a 9:16 video.</li>
+    <li><strong>Review</strong> — the owner watches the finished video and the caption in a local review page
+    and approves this exact video.</li>
+    <li><strong>Publish</strong> — the tool requests the creator's privacy options, uploads the MP4 in chunks
+    and calls the Content Posting API with the approved caption; it then polls the publish status and records
+    the result.</li>
+  </ol>
+
+  <h2>TikTok permissions used</h2>
+  <ul>
+    <li><code>user.info.basic</code> — show which TikTok account the post will go to (Login Kit consent screen).</li>
+    <li><code>video.publish</code> — direct-post an approved video to that account.</li>
+    <li><code>video.upload</code> — deliver a draft to that account's TikTok inbox for editing in the app.</li>
+  </ul>
+  <p class="muted">Pick Key does not read messages, analytics or other people's data, and does not automate
+  likes, comments or follows.</p>
+
+  <h2>How publishing works</h2>
+  <p>The tool uses <code>POST /v2/post/publish/creator_info/query/</code> to read the account's available
+  privacy levels, <code>POST /v2/post/publish/video/init/</code> to start the upload, a chunked
+  <code>PUT</code> to the returned upload URL (5–64 MB per chunk, as in TikTok's Media Transfer Guide), and
+  <code>POST /v2/post/publish/status/fetch/</code> to follow the post through processing and moderation.</p>
+</main>
+
+<footer>
+  Pick Key · <a href="terms.html">Terms of Service</a> · <a href="privacy.html">Privacy Policy</a> ·
+  <a href="mailto:pickkeyreal@gmail.com">pickkeyreal@gmail.com</a>
+</footer>
+</body>
+</html>
